@@ -13,6 +13,81 @@
 
     <style>
 
+/* Menarik semua text & countdown ke atas biar presisi di tengah layar */
+.cover-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-40px); /* KUNCI: Menaikkan posisi biar ga kena wayang */
+    width: 100%;
+    z-index: 10;
+}
+
+/* Container Countdown dibuat ramping dan mungil */
+.cover-countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px; /* Jarak pas setelah nama "Bagus" */
+    width: 60%;
+    max-width: 210px; /* Lebar dikecilkan biar muat di sela wayang */
+}
+
+/* Grid Box rapat */
+.cover-countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    width: 100%;
+}
+
+/* Kotak Box Mini Premium */
+.cover-box {
+    background: rgba(251, 249, 246, 0.85); /* Sedikit lebih solid biar kebaca */
+    backdrop-filter: blur(4px); 
+    border: 1px solid rgba(197, 168, 128, 0.35); 
+    border-radius: 8px;
+    padding: 6px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(197, 168, 128, 0.05);
+}
+
+/* Angka Ukuran Pas */
+.cover-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #c5a880; 
+    line-height: 1;
+}
+
+/* Tulisan Hari, Jam, dll */
+.cover-lbl {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.45rem;
+    color: #666666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 3px;
+}
+
+/* Penyesuaian Responsif HP Kecil */
+@media (max-width: 360px) {
+    .cover-countdown {
+        margin-bottom: 15px;
+    }
+    .cover-num {
+        font-size: 1.05rem;
+    }
+    .cover-lbl {
+        font-size: 0.5rem;
+    }
+}
+
 html, body {
     max-width: 100%;
     overflow-x: hidden;
@@ -355,7 +430,7 @@ html, body {
             width: 700px;
             height: 450px;
             background: url('wayang.png') no-repeat center center/contain;
-            opacity: 0.50;
+            opacity: 0.30;
             pointer-events: none;
         }
 
@@ -591,42 +666,48 @@ html, body {
             margin-bottom: 40px;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            max-width: 500px;
-            margin: 0 auto;
-        }
+/* Container Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important; /* Grid dasar tetap 2 kolom */
+    gap: 12px !important;
+    max-width: 500px;
+    margin: 0 auto;
+}
 
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 4px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
+/* Base style item */
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
-        }
+.gallery-item img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
 
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
+/* CLASS BARU SESUAI CORETAN LU */
 
-        .grid-wide {
-            grid-column: span 2;
-            height: 200px;
-        }
+/* 1. Full-Width tapi bentuknya KOTAK 1:1 (Untuk Foto 1 & Foto 4) */
+.grid-wide-square {
+    grid-column: span 2 !important; /* Lebar penuh */
+    aspect-ratio: 1 / 1 !important; /* Kotak sempurna */
+}
 
-        .grid-tall {
-            grid-row: span 2;
-            height: 310px;
-        }
+/* 2. Berdampingan Sejajar di Tengah (Untuk Foto 2 & Foto 3) */
+.grid-half-tall {
+    aspect-ratio: 9 / 16 !important; /* Rasio tinggi ramping biar sejajar pas */
+}
+
+/* 3. Penutup Paling Bawah (Untuk Foto 5 Cincin) */
+.grid-wide-banner {
+    grid-column: span 2 !important;
+    aspect-ratio: 16 / 9 !important; /* Lebar estetik */
+}
 
         .grid-normal {
             height: 150px;
@@ -1020,11 +1101,50 @@ html, body {
     width: 700px !important;     
     height: 450px !important;
     object-fit: contain !important;
-    opacity: 0.50 !important;    
+    opacity: 0.30 !important;    
     pointer-events: none !important;
     z-index: 2 !important;       
 }
-        
+    
+/* Reset & Styling Tombol Musik Baru (Anti-Bentrok) */
+.music-btn-baru {
+    position: fixed !important;
+    bottom: 25px !important;
+    right: 25px !important;
+    width: 50px !important;
+    height: 50px !important;
+    background-color: #c5a880 !important; /* Warna emas senada */
+    border: 2px solid #ffffff !important;
+    border-radius: 50% !important; /* WAJIB BULAT SAKTI */
+    color: #ffffff !important;
+    font-size: 1.5rem !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    z-index: 999999 !important; /* Di depan layar */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+    display: none !important; /* Sembunyi dulu sebelum dibuka */
+}
+
+/* Hover effect biar asik */
+.music-btn-baru:hover {
+    transform: scale(1.1);
+    background-color: #b3956b !important;
+}
+
+/* Animasi putar icon compact disc */
+.fa-spin-custom {
+    animation: spinMusic 3s linear infinite !important;
+}
+
+@keyframes spinMusic {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
     </style>
 
 </head>
@@ -1050,22 +1170,20 @@ html, body {
         </div>
     </section>
 
+
+
 <section class="opening-fullscreen" style="position: relative; overflow: hidden; background-color: var(--bg-cream); height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
         
-        <!-- TAG BARU: Gambar Rumah Bolon di Pojok Kiri Bawah -->
         <img src="image.png" class="rumah-bolon-opening" alt="Rumah Bolon">
         
-        <!-- Border Bingkai Mewah Sekeliling Layar -->
         <div style="position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px; border: 1px solid rgba(197, 168, 128, 0.35); pointer-events: none; z-index: 5;"></div>
         <div style="position: absolute; top: 16px; left: 16px; right: 16px; bottom: 16px; border: 1px dashed rgba(197, 168, 128, 0.15); pointer-events: none; z-index: 5;"></div>
 
-        <!-- Ornamen Sudut Mewah (Kiri Atas) -->
         <div style="position: absolute; top: 20px; left: 20px; width: 40px; height: 40px; border-top: 2px solid var(--gold-accent); border-left: 2px solid var(--gold-accent); opacity: 0.7; pointer-events: none; z-index: 5;"></div>
-        <!-- Ornamen Sudut Mewah (Kanan Atas) -->
         <div style="position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-top: 2px solid var(--gold-accent); border-right: 2px solid var(--gold-accent); opacity: 0.7; pointer-events: none; z-index: 5;"></div>
 
-        <!-- Konten Utama (Text) -->
-        <div style="position: relative; z-index: 10; text-align: center; margin-top: -40px;">
+        <!-- BUNGKUSAN UTAMA: Ditarik naik biar ga nabrak elemen bawah -->
+        <div class="cover-content-wrapper">
             <div class="opening-title reveal" style="color: var(--gold-accent); font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 25px; font-weight: 600;">
                 The Wedding Of
             </div>
@@ -1075,13 +1193,35 @@ html, body {
                 <div class="ampersand-line" style="margin: 5px 0; color: var(--gold-accent); text-shadow: none; font-family: 'Cinzel', serif; font-size: 1.5rem;">&</div>
                 <div class="name-line" style="color: var(--text-dark); text-shadow: none; font-family: 'Great Vibes', cursive; font-size: 3.8rem; font-weight: 400; line-height: 1.1;">Bagus</div>
             </div>
+
+            <!-- COUNTDOWN DI SINI (Masuk ke dalem wrapper biar ikut naik) -->
+            <div class="cover-countdown">
+                <div class="cover-countdown-grid">
+                    <div class="cover-box">
+                        <span id="cover-days" class="cover-num">00</span>
+                        <span class="cover-lbl">Hari</span>
+                    </div>
+                    <div class="cover-box">
+                        <span id="cover-hours" class="cover-num">00</span>
+                        <span class="cover-lbl">Jam</span>
+                    </div>
+                    <div class="cover-box">
+                        <span id="cover-minutes" class="cover-num">00</span>
+                        <span class="cover-lbl">Menit</span>
+                    </div>
+                    <div class="cover-box">
+                        <span id="cover-seconds" class="cover-num">00</span>
+                        <span class="cover-lbl">Detik</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="scroll-indicator" style="z-index: 10; bottom: 30px;">
             <i class="fa-solid fa-chevron-down"></i>
         </div>
 
-    </section>
+</section>
 
 <div class="reveal-zoom" style="max-width: 480px; margin: 90px auto 100px auto; padding: 0 20px; position: relative;">
 
@@ -1090,7 +1230,7 @@ html, body {
     </div>
 
     <p dir="rtl" class="reveal-zoom delay-2" style="font-family: 'Amiri', 'Traditional Arabic', serif; font-size: 1.25rem; color: var(--text-dark); line-height: 2.3; text-align: center; margin: 0 auto 30px auto; font-weight: 500; word-spacing: 2px; text-shadow: 0px 1px 2px rgba(197, 168, 128, 0.25);">
-        وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
+        وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ mِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
     </p>
 
     <div class="reveal-bounce delay-3" style="display: flex; align-items: center; justify-content: center; margin: 35px auto 35px auto; max-width: 200px;">
@@ -1237,7 +1377,7 @@ html, body {
                 <div class="timeline-content reveal-right">
                     <div class="tl-year">2014 - 2022</div>
                     <div class="tl-title">Labirin Hati</div>
-                    <div class="tl-body">Delapan tahun bertumbuh sebagai sahabat, kami sempat mengembara mencari cinta dan dipisahkan dua kota (Bandung-Bogor). Namun, rumah tempat kami pulang selalu dekat.</div>
+                    <div class="tl-body">Delapan tahun bertumbuh as sahabat, kami sempat mengembara mencari cinta dan dipisahkan dua kota (Bandung-Bogor). Namun, rumah tempat kami pulang selalu dekat.</div>
                 </div>
             </div>
 
@@ -1274,20 +1414,23 @@ html, body {
         <div class="gallery-title reveal">Our Moment</div>
         <div class="gallery-subtitle reveal delay-1">Wedding Gallery</div>
 
-        <div class="gallery-grid">
-            <div class="gallery-item grid-wide reveal-zoom delay-1">
-                <img src="horizontal.JPG" alt="Moments 1">
+<div class="gallery-grid">
+            <div class="gallery-item grid-wide-square reveal-zoom delay-1">
+                <img src="jawaduduk.JPEG" alt="Moments 1">
             </div>
-            <div class="gallery-item grid-tall reveal-zoom delay-2">
-                <img src="ring.JPG" alt="Moments 2">
+            
+            <div class="gallery-item grid-half-tall reveal-zoom delay-2">
+                <img src="jawaberdiri.JPEG" alt="Moments 2">
             </div>
-            <div class="gallery-item grid-normal reveal-zoom delay-3">
-                <img src="jalan.JPG" alt="Moments 3">
+            <div class="gallery-item grid-half-tall reveal-zoom delay-3">
+                <img src="minangdiri.JPEG" alt="Moments 3">
             </div>
-            <div class="gallery-item grid-normal reveal-zoom delay-4">
-                <img src="rumput.JPG" alt="Moments 4">
+            
+            <div class="gallery-item grid-wide-square reveal-zoom delay-4">
+                <img src="minangduduk.JPEG" alt="Moments 4">
             </div>
-            <div class="gallery-item grid-wide reveal-zoom delay-5">
+            
+            <div class="gallery-item grid-wide-banner reveal-zoom delay-5">
                 <img src="cincin.JPG" alt="Moments 5">
             </div>
         </div>
@@ -1371,10 +1514,76 @@ html, body {
         </div>
     </footer>
 
+    <audio id="background-music" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-control" class="music-btn-baru" onclick="toggleMusic()">
+        <i id="music-icon" class="fa-solid fa-compact-disc"></i>
+    </div>
+
     <script>
+
+// Set target ke Minggu, 16 Agustus 2026 jam 09:00:00 WIB
+const akadDate = new Date("August 16, 2026 09:00:00").getTime();
+
+const startCoverCountdown = setInterval(() => {
+    const currentTime = new Date().getTime();
+    const timeLeft = akadDate - currentTime;
+
+    // Jika waktu habis
+    if (timeLeft < 0) {
+        clearInterval(startCoverCountdown);
+        document.getElementById("cover-days").innerText = "00";
+        document.getElementById("cover-hours").innerText = "00";
+        document.getElementById("cover-minutes").innerText = "00";
+        document.getElementById("cover-seconds").innerText = "00";
+        return;
+    }
+
+    // Kalkulasi Waktu
+    const d = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    const h = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const m = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    // Tampilkan ke layar
+    document.getElementById("cover-days").innerText = d < 10 ? "0" + d : d;
+    document.getElementById("cover-hours").innerText = h < 10 ? "0" + h : h;
+    document.getElementById("cover-minutes").innerText = m < 10 ? "0" + m : m;
+    document.getElementById("cover-seconds").innerText = s < 10 ? "0" + s : s;
+
+}, 1000);
+
+        // Deklarasi Variabel Musik Global
+        const myAudio = document.getElementById("background-music");
+        const musicBtn = document.getElementById("music-control");
+        const musicIcon = document.getElementById("music-icon");
+
+        // Fungsi Membuka Undangan
         function bukaUndangan() {
-            document.getElementById('coverUndangan').classList.add('slide-up');
+            // Efek slide-up bawaan lu
+            const cover = document.getElementById('coverUndangan');
+            cover.classList.add('slide-up');
             document.body.classList.remove('locked');
+            
+            setTimeout(() => {
+                const triggerActive = new Event('scroll');
+                window.dispatchEvent(triggerActive);
+            }, 400);
+
+            // LOGIKA MUSIK: Munculkan tombol melayang bulat & mainkan lagunya
+            if (musicBtn) {
+                musicBtn.style.setProperty("display", "flex", "important");
+            }
+            if (myAudio) {
+                myAudio.play().then(() => {
+                    musicIcon.classList.add("fa-spin-custom"); // Icon CD mulai muter
+                    console.log("Musik diputar otomatis!");
+                }).catch(err => {
+                    console.log("Autoplay ditolak browser, nunggu interaksi: ", err);
+                });
+            }
 
             const openingNames = document.querySelector('.opening-fullscreen .hero-names-v');
             if (openingNames) {
@@ -1382,6 +1591,18 @@ html, body {
             }
         }
 
+        // Fungsi Play / Pause Manual
+        function toggleMusic() {
+            if (myAudio.paused) {
+                myAudio.play();
+                musicIcon.classList.add("fa-spin-custom"); // Muter lagi
+            } else {
+                myAudio.pause();
+                musicIcon.classList.remove("fa-spin-custom"); // Stop putaran
+            }
+        }
+
+        // Animasi Scroll Reveal Bawaan Lu
         document.addEventListener('DOMContentLoaded', () => {
             const revealElements = document.querySelectorAll(
                 '.reveal, .reveal-zoom, .reveal-left, .reveal-right, .reveal-drop, .reveal-blur, .reveal-bounce'
@@ -1402,9 +1623,8 @@ html, body {
 
             revealElements.forEach(el => observer.observe(el));
         });
-    </script>
 
-    <script>
+        // Copy Clipboard Bawaan Lu
         function copyToClipboard(elementId) {
             const textToCopy = document.getElementById(elementId).innerText;
 
