@@ -1012,6 +1012,18 @@ html, body {
     transform: none !important;
     object-fit: contain !important;
 }
+
+.rumah-bolon-opening {
+    position: absolute !important;
+    bottom: -80px !important;    /* Didorong ke bawah luar layar biar kepotong bawahnya */
+    left: -180px !important;     /* KUNCI: Didorong ke kiri luar layar biar kepotong sampingnya */
+    width: 700px !important;     /* Samain ukurannya sama si wayang biar seimbang */
+    height: 450px !important;
+    object-fit: contain !important;
+    opacity: 0.50 !important;    /* Efek transparan estetik selevel sama wayang */
+    pointer-events: none !important;
+    z-index: 1 !important;
+}
         
     </style>
 
@@ -1038,15 +1050,21 @@ html, body {
         </div>
     </section>
 
-    <section class="opening-fullscreen" style="position: relative; overflow: hidden; background-color: var(--bg-cream); height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
-
+<section class="opening-fullscreen" style="position: relative; overflow: hidden; background-color: var(--bg-cream); height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
+        
+        <!-- TAG BARU: Gambar Rumah Bolon di Pojok Kiri Bawah -->
+        <img src="bolon.png" class="rumah-bolon-opening" alt="Rumah Bolon">
+        
+        <!-- Border Bingkai Mewah Sekeliling Layar -->
         <div style="position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px; border: 1px solid rgba(197, 168, 128, 0.35); pointer-events: none; z-index: 5;"></div>
         <div style="position: absolute; top: 16px; left: 16px; right: 16px; bottom: 16px; border: 1px dashed rgba(197, 168, 128, 0.15); pointer-events: none; z-index: 5;"></div>
 
+        <!-- Ornamen Sudut Mewah (Kiri Atas) -->
         <div style="position: absolute; top: 20px; left: 20px; width: 40px; height: 40px; border-top: 2px solid var(--gold-accent); border-left: 2px solid var(--gold-accent); opacity: 0.7; pointer-events: none; z-index: 5;"></div>
-
+        <!-- Ornamen Sudut Mewah (Kanan Atas) -->
         <div style="position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-top: 2px solid var(--gold-accent); border-right: 2px solid var(--gold-accent); opacity: 0.7; pointer-events: none; z-index: 5;"></div>
 
+        <!-- Konten Utama (Text) -->
         <div style="position: relative; z-index: 10; text-align: center; margin-top: -40px;">
             <div class="opening-title reveal" style="color: var(--gold-accent); font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 25px; font-weight: 600;">
                 The Wedding Of
