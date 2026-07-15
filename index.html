@@ -1015,14 +1015,14 @@ html, body {
 
 .rumah-bolon-opening {
     position: absolute !important;
-    bottom: -80px !important;    /* Didorong ke bawah luar layar biar kepotong bawahnya */
-    left: -180px !important;     /* KUNCI: Didorong ke kiri luar layar biar kepotong sampingnya */
-    width: 700px !important;     /* Samain ukurannya sama si wayang biar seimbang */
+    bottom: -80px !important;    /* Biar bagian bawahnya kepotong pas */
+    left: -220px !important;     /* Kunci: Dibikin minus lebih gede biar geser maksimal ke kiri */
+    width: 700px !important;     /* Ukuran disamain sama wayang */
     height: 450px !important;
     object-fit: contain !important;
-    opacity: 0.50 !important;    /* Efek transparan estetik selevel sama wayang */
+    opacity: 0.50 !important;    /* Efek transparan estetik */
     pointer-events: none !important;
-    z-index: 1 !important;
+    z-index: 2 !important;       /* Diturunin biar di bawah teks nama (z-index: 10) */
 }
         
     </style>
