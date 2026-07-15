@@ -984,6 +984,35 @@ html, body {
     margin: 0 auto;
 }
 
+.rumah-adat-baru-container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: flex-end !important; /* Biar nempel sejajar di bawahnya rata */
+    gap: 12px !important;
+    margin: 25px auto !important;
+    width: 90% !important;
+    max-width: 400px !important;
+    height: auto !important;
+    position: relative !important; /* Mematikan efek absolute bawaan */
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+}
+
+.rumah-adat-baru-img {
+    width: 45% !important;
+    height: auto !important;
+    display: block !important;
+    position: relative !important; /* Paksa gambar gak melayang */
+    top: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    right: auto !important;
+    transform: none !important;
+    object-fit: contain !important;
+}
+        
     </style>
 
 </head>
@@ -1133,9 +1162,9 @@ html, body {
 
 <div style="border-top: 1px dashed rgba(212, 175, 55, 0.4); width: 85%; margin: 30px auto 25px auto;"></div>
 
-<div class="rumah-adat-container">
-    <img src="minang.png" alt="Rumah Minang" class="rumah-adat-img">
-    <img src="joglo.png" alt="Rumah Joglo" class="rumah-adat-img">
+<div class="rumah-adat-baru-container">
+    <img src="minang.png" class="rumah-adat-baru-img" alt="Rumah Minang">
+    <img src="joglo.png" class="rumah-adat-baru-img" alt="Rumah Joglo">
 </div>
 
             <p class="reveal delay-3" style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: bold; color: #2b1f1d; margin-bottom: 8px; letter-spacing: 1px;">
