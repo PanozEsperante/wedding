@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Bagus & Dian</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .scroll-indicator i {
+            font-size: 1.5rem;
+            color: #C5A880;
+            opacity: 1;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+            animation: bouncePanah 2s infinite;
+        }
+
+        @keyframes bouncePanah {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-8px); }
+            60% { transform: translateY(-4px); }
+        }
+
+        :root {
+            --bg-cream: #FDFBF7;
+            --text-dark: #2C2623;
+            --gold-accent: #C5A880;
+            --gold-light: #E5D5C0;
+            --shadow-soft: rgba(197, 168, 128, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        body.locked {
+            overflow: hidden;
+        }
+
+        .reveal, .reveal-zoom, .reveal-left, .reveal-right {
+            transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1),
+                        transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform;
+        }
+
+        .reveal-drop, .reveal-blur, .reveal-bounce {
+            transition: opacity 1s cubic-bezier(0.19, 1, 0.22, 1),
+                        transform 1.4s cubic-bezier(0.16, 1, 0.3, 1),
+                        filter 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: opacity, transform, filter;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(38px) scale(0.97);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .reveal-zoom {
+            opacity: 0;
+            transform: scale(0.86);
+        }
+        .reveal-zoom.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-50px) rotate(-1.2deg) scale(0.97);
+        }
+        .reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0) rotate(0) scale(1);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(50px) rotate(1.2deg) scale(0.97);
+        }
+        .reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0) rotate(0) scale(1);
+        }
+
+        .reveal-drop {
+            opacity: 0;
+            filter: blur(8px);
+            transform: translateY(-50px) scale(0.9);
+            transition-timing-function: cubic-bezier(0.22, 1.2, 0.36, 1);
+        }
+        .reveal-drop.visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: translateY(0) scale(1);
+        }
+
+        .reveal-blur {
+            opacity: 0;
+            filter: blur(14px);
+            transform: scale(1.06);
+        }
+        .reveal-blur.visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: scale(1);
+        }
+
+        .reveal-bounce {
+            opacity: 0;
+            filter: blur(4px);
+            transform: scaleX(0.35);
+            transition-timing-function: cubic-bezier(0.22, 1.2, 0.36, 1);
+        }
+        .reveal-bounce.visible {
+            opacity: 1;
+            filter: blur(0);
+            transform: scaleX(1);
+        }
+
+        .delay-1 { transition-delay: 0.1s; }
+        .delay-2 { transition-delay: 0.2s; }
+        .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.55s; }
+
+.hero {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: -webkit-fill-available;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 35%, rgba(0,0,0,0.85) 100%),
+                url('hero.jpeg') no-repeat center center/cover;
+    z-index: 99999;
+    transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.5s ease;
+    padding: 40px 20px 20px 20px;
+    overflow: hidden;
+    visibility: visible;
+}
+
+.hero.slide-up {
+            transform: translateY(-100vh);
+            opacity: 0;
+
+            visibility: hidden;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1),
+                        opacity 1s ease,
+                        visibility 0s linear 1s;
+        }
+
+        .hero-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            text-shadow: 1px 2px 5px rgba(0,0,0,0.5);
+            opacity: 0;
+            animation: fadeInDown 1.2s ease 0.3s forwards;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+.hero-footer-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    padding-bottom: 60px;
+    justify-content: flex-end;
+}
+
+        .hero-names-v {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+.hero-names-v .name-line {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3.3rem;
+    font-weight: 400;
+    color: #ffffff;
+    text-shadow: 2px 4px 12px rgba(0,0,0,0.8);
+    line-height: 1;
+}
+
+.hero-names-v .ampersand-line {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    color: var(--gold-light);
+    text-shadow: 2px 4px 12px rgba(0,0,0,0.8);
+    margin: 3px 0;
+}
+
+.hero-cover-date {
+    font-size: 0.85rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #e0e0e0;
+    margin: 12px 0 20px 0;
+    font-weight: 400;
+    text-shadow: 1px 2px 5px rgba(0,0,0,0.5);
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding: 5px 15px;
+}
+
+        .hero-names-v {
+            opacity: 0;
+            animation: fadeInUp 1.4s ease 0.5s forwards;
+        }
+        .hero-cover-date {
+            opacity: 0;
+            animation: fadeInUp 1.4s ease 0.8s forwards;
+        }
+        .btn-buka {
+            opacity: 0;
+            animation: fadeInUp 1.4s ease 1.1s forwards;
+        }
+
+        .tamu-info {
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            color: #ffffff;
+        }
+
+        .tamu-info span {
+            display: block;
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 2px;
+            letter-spacing: 1px;
+        }
+
+        .tamu-info h4 {
+            font-size: 1.1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--gold-light);
+        }
+
+        .btn-buka {
+            padding: 12px 35px;
+            background-color: var(--text-dark);
+            color: #ffffff;
+            border: 1px solid var(--gold-accent);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-buka:hover {
+            background-color: var(--gold-accent);
+            color: var(--text-dark);
+            box-shadow: 0 5px 15px rgba(255,255,255,0.2);
+        }
+
+        .opening-fullscreen {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: var(--bg-cream);
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .opening-fullscreen::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -30px;
+            width: 700px;
+            height: 280px;
+            background: url('wayang.png') no-repeat center center/contain;
+            opacity: 0.0;
+
+            pointer-events: none;
+        }
+
+        .opening-fullscreen::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: -0.1px;
+            width: 700px;
+            height: 450px;
+            background: url('wayang.png') no-repeat center center/contain;
+            opacity: 0.50;
+            pointer-events: none;
+        }
+
+        .opening-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold-accent);
+            margin-bottom: 20px;
+        }
+
+        .opening-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: var(--text-dark);
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+        }
+
+        .content-section {
+            padding: 80px 15px;
+            text-align: center;
+            background-color: var(--bg-cream);
+        }
+
+.content-container {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 50px 30px;
+    border: 1px solid var(--gold-accent);
+    position: relative;
+    background: #ffffff;
+    box-shadow: 0 15px 35px var(--shadow-soft);
+
+    border-radius: 20px;
+}
+
+.content-container::before {
+    display: none !important;
+    content: none !important;
+}
+
+.joglo-custom {
+    text-align: center;
+    margin: 25px auto 20px auto;
+    width: 140px;
+    opacity: 0.95;
+}
+
+        .section-intro {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gold-accent);
+            margin-bottom: 35px;
+            font-weight: 500;
+        }
+
+        .mempelai-flex {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        @media(min-width: 480px) {
+            .mempelai-flex {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+            .mempelai-box {
+                width: 48%;
+            }
+        }
+
+.mempelai-box, .account-card-premium {
+    background-color: #fcfbfa;
+    background-image: radial-gradient(rgba(141, 110, 71, 0.06) 1px, transparent 0);
+    background-size: 8px 8px;
+
+    border: 2px solid #8D6E47;
+    padding: 35px 20px;
+    border-radius: 20px;
+    box-shadow: 0 12px 35px rgba(43, 31, 29, 0.08);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.mempelai-box::before, .account-card-premium::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    right: 6px;
+    bottom: 6px;
+    border: 1px solid rgba(141, 110, 71, 0.4);
+    pointer-events: none;
+    border-radius: 14px;
+}
+
+.mempelai-box:hover, .account-card-premium:hover {
+    border-color: #A98455;
+    box-shadow: 0 15px 35px rgba(141, 110, 71, 0.2);
+    background-color: #ffffff;
+}
+
+        .profile-circle {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            border: 2px solid var(--gold-accent);
+            padding: 5px;
+            position: relative;
+        }
+
+        .profile-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .mempelai-box h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .mempelai-parent {
+            font-size: 0.8rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .btn-ig {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 6px 18px;
+            background-color: transparent;
+            border: 1px solid var(--gold-accent);
+            color: var(--text-dark);
+            border-radius: 6px;
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-style: italic;
+            transition: all 0.3s ease;
+            margin-top: 5px;
+        }
+
+        .btn-ig:hover {
+            background-color: var(--gold-accent);
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(197, 168, 128, 0.2);
+        }
+
+        .event-details {
+            margin-top: 45px;
+            border-top: 1px dashed var(--gold-accent);
+            padding-top: 40px;
+        }
+
+        .event-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .event-info {
+            font-size: 0.9rem;
+            line-height: 1.9;
+            margin-bottom: 35px;
+            color: #4A4A4A;
+            letter-spacing: 0.5px;
+        }
+
+        .event-info strong {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .btn-maps {
+            display: inline-block;
+            padding: 14px 35px;
+            background-color: var(--text-dark);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            border: 1px solid var(--text-dark);
+            border-radius: 2px;
+        }
+
+        .btn-maps:hover {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--text-dark);
+            box-shadow: 0 5px 15px var(--shadow-soft);
+        }
+
+        .gallery-section {
+            padding: 60px 20px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .gallery-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gold-accent);
+            margin-bottom: 5px;
+        }
+
+        .gallery-subtitle {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: var(--text-dark);
+            margin-bottom: 40px;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .grid-wide {
+            grid-column: span 2;
+            height: 200px;
+        }
+
+        .grid-tall {
+            grid-row: span 2;
+            height: 310px;
+        }
+
+        .grid-normal {
+            height: 150px;
+        }
+
+.story-section {
+            padding: 50px 20px;
+            background-color: var(--bg-cream);
+        }
+
+        .story-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .story-batik-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.8rem;
+            color: #2b1f1d;
+            line-height: 1.1;
+        }
+
+        .story-caption-title {
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            color: #555555;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .timeline-container {
+            position: relative;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 10px 0 10px 20px;
+        }
+
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--gold-accent) 10%, var(--gold-accent) 90%, transparent);
+            top: 0;
+            bottom: 0;
+            left: 25px;
+        }
+
+        .timeline-block {
+            position: relative;
+            margin-bottom: 25px;
+            width: 100%;
+            display: flex;
+            padding-left: 25px;
+        }
+
+        .timeline-content {
+            position: relative;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 12px;
+            padding: 15px 15px;
+            box-shadow: 0 4px 12px rgba(43, 31, 29, 0.02);
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #2b1f1d;
+            border: 2px solid var(--gold-accent);
+            border-radius: 50%;
+            top: 22px;
+            left: 25px;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .tl-year {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--gold-accent);
+            margin-bottom: 2px;
+            letter-spacing: 1px;
+        }
+
+        .tl-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #2b1f1d;
+            margin-bottom: 6px;
+        }
+
+        .tl-body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            color: #555555;
+            line-height: 1.5;
+        }
+
+        .arrow-left { left: 5px; }
+        .arrow-right { right: 5px; }
+
+        .gift-section {
+            padding: 60px 20px;
+            background-color: var(--bg-cream);
+            text-align: center;
+        }
+
+        .gift-container {
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .gift-intro {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+
+.account-card-premium {
+    background-color: #fcfbfa;
+    background-image: radial-gradient(rgba(197, 168, 128, 0.05) 1px, transparent 0);
+    background-size: 8px 8px;
+
+    border: 1px solid rgba(197, 168, 128, 0.5);
+    padding: 30px 20px;
+    border-radius: 20px;
+    box-shadow: 0 12px 30px rgba(43, 31, 29, 0.06);
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s ease;
+}
+
+.account-card-premium::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px dashed rgba(197, 168, 128, 0.35);
+    pointer-events: none;
+    border-radius: 14px;
+}
+
+.account-card-premium:hover {
+    border-color: rgba(197, 168, 128, 0.85);
+    box-shadow: 0 15px 35px rgba(197, 168, 128, 0.15);
+    background-color: #ffffff;
+    transform: translateY(-3px);
+}
+
+        .bank-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #2b1f1d;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .account-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: var(--text-dark);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .account-holder {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: #777777;
+            margin-bottom: 18px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .account-holder::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 1px;
+            background-color: var(--gold-accent);
+            opacity: 0.4;
+        }
+
+        .btn-copy {
+            background: none;
+            border: 1px solid var(--gold-accent);
+            color: var(--gold-accent);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 8px 24px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+        }
+
+        .btn-copy:hover {
+            background: var(--gold-accent);
+            color: #ffffff;
+        }
+
+        .toast-notify {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(43, 31, 29, 0.9);
+            color: #ffffff;
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+        }
+        .toast-notify.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .closing-footer {
+            padding: 80px 20px 60px 20px;
+            background-color: var(--bg-cream);
+            text-align: center;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        .closing-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 1px;
+            background-color: var(--gold-accent);
+            opacity: 0.3;
+        }
+
+        .closing-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: #666666;
+            line-height: 1.8;
+            max-width: 380px;
+            margin: 0 auto 35px auto;
+        }
+
+        .closing-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8rem;
+            color: var(--gold-accent);
+            margin-bottom: 35px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
+        }
+
+        .copyright-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            color: #aaaaaa;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .gift-physical-section {
+            padding: 50px 20px 30px 20px;
+            background-color: var(--bg-cream);
+            text-align: center;
+        }
+
+        .gift-physical-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: #2b1f1d;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .gift-physical-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: #555555;
+            line-height: 1.6;
+            max-width: 400px;
+            margin: 0 auto 20px auto;
+        }
+
+        .address-detail {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2b1f1d;
+            line-height: 1.5;
+            margin-bottom: 5px;
+        }
+
+        .receiver-name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: #777777;
+            margin-bottom: 15px;
+        }
+
+.event-details {
+    border-top: none !important;
+}
+.event-details::before {
+    display: none !important;
+    content: none !important;
+}
+
+.pembatas-etnik {
+    text-align: center;
+    margin: 50px auto 10px auto;
+    width: 60%;
+    max-width: 220px;
+    opacity: 0.95;
+}
+
+.pembatas-etnik img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+    </style>
+
+</head>
+<body class="locked">
+
+    <section class="hero" id="coverUndangan">
+
+        <div class="hero-title">Undangan Pernikahan</div>
+
+        <div class="hero-footer-wrapper">
+
+            <div class="hero-names-v">
+                <div class="name-line">Bagus</div>
+                <div class="ampersand-line">&</div>
+                <div class="name-line">Dian</div>
+            </div>
+
+            <div class="hero-cover-date">16 Agustus 2026</div>
+
+            <button class="btn-buka" onclick="bukaUndangan()">
+                <i class="fa-solid fa-envelope-open"></i> Buka Undangan
+            </button>
+        </div>
+    </section>
+
+    <section class="opening-fullscreen" style="position: relative; overflow: hidden; background-color: var(--bg-cream); height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
+
+        <div style="position: absolute; top: 12px; left: 12px; right: 12px; bottom: 12px; border: 1px solid rgba(197, 168, 128, 0.35); pointer-events: none; z-index: 5;"></div>
+        <div style="position: absolute; top: 16px; left: 16px; right: 16px; bottom: 16px; border: 1px dashed rgba(197, 168, 128, 0.15); pointer-events: none; z-index: 5;"></div>
+
+        <div style="position: absolute; top: 20px; left: 20px; width: 40px; height: 40px; border-top: 2px solid var(--gold-accent); border-left: 2px solid var(--gold-accent); opacity: 0.7; pointer-events: none; z-index: 5;"></div>
+
+        <div style="position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-top: 2px solid var(--gold-accent); border-right: 2px solid var(--gold-accent); opacity: 0.7; pointer-events: none; z-index: 5;"></div>
+
+        <div style="position: relative; z-index: 10; text-align: center; margin-top: -40px;">
+            <div class="opening-title reveal" style="color: var(--gold-accent); font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 25px; font-weight: 600;">
+                The Wedding Of
+            </div>
+
+            <div class="hero-names-v reveal delay-1" style="margin: 0; opacity: 0; animation: none; display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                <div class="name-line" style="color: var(--text-dark); text-shadow: none; font-family: 'Great Vibes', cursive; font-size: 3.8rem; font-weight: 400; line-height: 1.1;">Bagus</div>
+                <div class="ampersand-line" style="margin: 5px 0; color: var(--gold-accent); text-shadow: none; font-family: 'Cinzel', serif; font-size: 1.5rem;">&</div>
+                <div class="name-line" style="color: var(--text-dark); text-shadow: none; font-family: 'Great Vibes', cursive; font-size: 3.8rem; font-weight: 400; line-height: 1.1;">Dian</div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator" style="z-index: 10; bottom: 30px;">
+            <i class="fa-solid fa-chevron-down"></i>
+        </div>
+
+    </section>
+
+<div class="reveal-zoom" style="max-width: 480px; margin: 90px auto 100px auto; padding: 0 20px; position: relative;">
+
+    <div class="reveal-zoom delay-1" style="font-family: 'Amiri', serif; font-size: 1.15rem; color: var(--gold-accent); margin-bottom: 35px; text-align: center; letter-spacing: 1px;">
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+    </div>
+
+    <p dir="rtl" class="reveal-zoom delay-2" style="font-family: 'Amiri', 'Traditional Arabic', serif; font-size: 1.25rem; color: var(--text-dark); line-height: 2.3; text-align: center; margin: 0 auto 30px auto; font-weight: 500; word-spacing: 2px; text-shadow: 0px 1px 2px rgba(197, 168, 128, 0.25);">
+        وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
+    </p>
+
+    <div class="reveal-bounce delay-3" style="display: flex; align-items: center; justify-content: center; margin: 35px auto 35px auto; max-width: 200px;">
+        <div style="flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--gold-accent)); opacity: 0.5;"></div>
+        <i class="fas fa-heart" style="font-size: 0.55rem; color: var(--gold-accent); margin: 0 10px;"></i>
+        <div style="flex: 1; height: 1px; background: linear-gradient(to left, transparent, var(--gold-accent)); opacity: 0.5;"></div>
+    </div>
+
+    <p class="reveal delay-5" style="font-family: 'Montserrat', sans-serif; font-size: 0.78rem; color: #4A4542; line-height: 1.8; text-align: center; margin-bottom: 25px; font-weight: 400; padding: 0 5px;">
+        "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+    </p>
+
+    <div class="reveal delay-5" style="font-family: 'Cinzel', serif; font-size: 0.72rem; color: var(--gold-accent); letter-spacing: 2px; font-weight: 600; text-align: center; margin-top: 30px;">
+        — QS. AR-RUM: 21 —
+    </div>
+</div>
+
+<section class="content-section" style="padding-top: 0; margin-top: 0;">
+
+    <div class="content-container reveal-zoom" style="margin-top: -35px;">
+
+        <div class="section-intro reveal">Misi & Doa Restu</div>
+
+        <p class="reveal delay-1" style="font-size: 0.85rem; font-style: italic; color: #666; margin-bottom: 20px; padding: 0 10px;">
+            "Tanpa mengurangi rasa hormat, kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri hari bahagia pernikahan kami."
+        </p>
+
+            <div class="mempelai-flex">
+
+                <div class="mempelai-box reveal-left delay-1">
+                    <div class="profile-circle">
+                        <img src="dian.jpeg" alt="Bagus Prasetyo">
+                    </div>
+                    <h3>DIAN NURKHAIRANI PANGARIBUAN, S.Li</h3>
+                    <p class="mempelai-parent">
+                        Putri pertama dari Keluarga<br>
+                        <strong>Alm. Bapak H. Rispandi Pangaribuan & Ibu Ana Sarma Simangunsong</strong>
+                    </p>
+                    <a href="https://www.instagram.com/d.nrkhrn?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-ig">
+                        <i class="fab fa-instagram"></i> @d.nrkhrn
+                    </a>
+                </div>
+
+                <div class="mempelai-box reveal-right delay-2">
+                    <div class="profile-circle">
+                        <img src="bagus.jpeg" alt="Dian Utami">
+                    </div>
+                    <h3>BAGUS PRASETYO SADIKIN, S.T</h3>
+                    <p class="mempelai-parent">
+                        Putra kedua dari Keluarga<br>
+                        <strong>Bapak Tugas Mohamad Sadikin & Ibu Dra. Ika Bekti Ratna Sari, M.Pd.</strong>
+                    </p>
+                    <a href="https://www.instagram.com/bagusadikin?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="btn-ig">
+                        <i class="fab fa-instagram"></i> @bagusadikin
+                    </a>
+                </div>
+
+            </div>
+
+<div style="border-top: 1px dashed rgba(212, 175, 55, 0.4); width: 85%; margin: 30px auto 25px auto;"></div>
+
+<div class="event-details reveal" style="padding-top: 0; margin-top: 0;">
+
+    <h2 class="reveal" style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: #2b1f1d; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; margin-top: 0;">
+        Akad Pernikahan
+    </h2>
+
+    <p class="reveal delay-1" style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: bold; color: #2b1f1d; margin-bottom: 5px;">
+        Minggu, 16 Agustus 2026
+    </p>
+
+            <p class="reveal delay-2" style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: #777777; margin-bottom: 30px;">
+                Pukul 09.00 - 11.00 WIB
+            </p>
+
+            <h2 class="reveal" style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: #2b1f1d; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase;">
+                Resepsi Pernikahan
+            </h2>
+
+            <p class="reveal delay-1" style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: bold; color: #2b1f1d; margin-bottom: 5px;">
+                Minggu, 16 Agustus 2026
+            </p>
+
+            <p class="reveal delay-2" style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: #777777; margin-bottom: 35px;">
+                Pukul 11.00 - 16.00 WIB
+            </p>
+
+<div style="border-top: 1px dashed rgba(212, 175, 55, 0.4); width: 85%; margin: 30px auto 25px auto;"></div>
+
+<div class="reveal-zoom" style="text-align: center; margin: 0 auto 25px auto; width: 135px; opacity: 5;">
+    <img src="joglo.png" alt="Ornaments Joglo" style="width: 100%; height: auto; display: block; margin: 0 auto;">
+</div>
+
+            <p class="reveal delay-3" style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: bold; color: #2b1f1d; margin-bottom: 8px; letter-spacing: 1px;">
+                Lokasi :
+            </p>
+
+            <p class="reveal delay-4" style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; color: #777777; line-height: 1.6; margin-bottom: 30px;">
+                Jl. Mawar, RT03/RW01, No.17, Muaraberes Sukahati, Cibinong, Bogor, Jawa Barat <br>
+
+            </p>
+
+<div class="reveal" style="width: 100%; max-width: 100%; margin: 25px 0 20px 0; border-radius: 15px; overflow: hidden; border: 1px solid rgba(197, 168, 128, 0.4); box-shadow: 0 8px 20px rgba(0,0,0,0.06); line-height: 0;">
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.3018265005835!2d106.82901509999999!3d-6.483416499999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c14175317769%3A0xe6bf4b149bfe3e4d!2sJl.%20Mawar%2C%20Sukahati%2C%20Kec.%20Cibinong%2C%20Kabupaten%20Bogor%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1710000000000!5m2!1sid!2sid"
+        width="100%"
+        height="180"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+</div>
+
+            <a href="https://maps.app.goo.gl/rGJ5eRnMUnazRaMq6" target="_blank" class="reveal-zoom delay-5" style="text-decoration: none; display: inline-block;">
+                <button style="background-color: #2b1f1d; color: #ffffff; border: none; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; font-weight: 600; padding: 12px 35px; letter-spacing: 2px; cursor: pointer; transition: all 0.3s ease; position: relative; z-index: 10;">
+                    VIEW LOCATION
+                </button>
+            </a>
+
+        </div>
+        </div>
+    </section>
+
+<section class="story-section" id="galeri">
+        <div class="story-header">
+            <div class="story-batik-title reveal-drop">Our Story</div>
+            <div class="story-caption-title reveal-blur delay-1">Satu Dekade Menuju Selamanya</div>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-block">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content reveal-right">
+                    <div class="tl-year">2014</div>
+                    <div class="tl-title">Garis Takdir Dimulai</div>
+                    <div class="tl-body">Di bangku SMA yang sama di SMAN 3 Cibinong, semesta mempertemukan kami untuk pertama kalinya. Langkah kecil inilah yang menjadi awal dari sebuah cerita panjang.</div>
+                </div>
+            </div>
+
+            <div class="timeline-block">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content reveal-right">
+                    <div class="tl-year">2014 - 2022</div>
+                    <div class="tl-title">Labirin Hati</div>
+                    <div class="tl-body">Delapan tahun bertumbuh sebagai sahabat, kami sempat mengembara mencari cinta dan dipisahkan dua kota (Bandung-Bogor). Namun, rumah tempat kami pulang selalu dekat.</div>
+                </div>
+            </div>
+
+            <div class="timeline-block">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content reveal-right">
+                    <div class="tl-year">2022 - 2023</div>
+                    <div class="tl-title">Sahabat Menjadi Cinta</div>
+                    <div class="tl-body">Satu keberanian besar akhirnya meruntuhkan tembok persahabatan saat ungkapan rasa itu diutarakan. Hati kami benar-benar yakin untuk saling bertaut.</div>
+                </div>
+            </div>
+
+            <div class="timeline-block">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content reveal-right">
+                    <div class="tl-year">2024</div>
+                    <div class="tl-title">Warna-Warni Romansa</div>
+                    <div class="tl-body">Mengubah panggilan sahabat menjadi kekasih membawa kecanggungan manis. Namun perlahan, kami merajut hari demi hari dengan kehangatan harmoni cinta.</div>
+                </div>
+            </div>
+
+            <div class="timeline-block">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content reveal-right">
+                    <div class="tl-year">2025 - 2026</div>
+                    <div class="tl-title">Dermaga Terakhir</div>
+                    <div class="tl-body">Langkah mantap diayunkan saat komitmen sehidup semati disambut keyakinan penuh. Kini di tahun 2026, kami siap mengikat janji suci dalam satu ikatan abadi.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="gallery-title reveal">Our Moment</div>
+        <div class="gallery-subtitle reveal delay-1">Wedding Gallery</div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item grid-wide reveal-zoom delay-1">
+                <img src="horizontal.jpg" alt="Moments 1">
+            </div>
+            <div class="gallery-item grid-tall reveal-zoom delay-2">
+                <img src="ring.jpg" alt="Moments 2">
+            </div>
+            <div class="gallery-item grid-normal reveal-zoom delay-3">
+                <img src="jalan.jpg" alt="Moments 3">
+            </div>
+            <div class="gallery-item grid-normal reveal-zoom delay-4">
+                <img src="rumput.jpg" alt="Moments 4">
+            </div>
+            <div class="gallery-item grid-wide reveal-zoom delay-5">
+                <img src="cincin.jpg" alt="Moments 5">
+            </div>
+        </div>
+
+</section>
+
+    <div class="reveal-zoom pembatas-etnik">
+        <img src="pembatas.png" alt="Ornamen Pembatas Nikah">
+    </div>
+
+    <h2 class="reveal-drop" style="font-family: 'Cinzel', serif; font-size: 1.6rem; color: #2b1f1d; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; text-align: center;">
+        GIFT
+    </h2>
+
+    <section class="gift-physical-section" style="padding-top: 10px;">
+        <p class="gift-physical-text reveal delay-1">
+            Bagi Bapak/Ibu/Saudara/i yang ingin mengirimkan hadiah berupa kado fisik/barang, dapat dikirimkan ke alamat berikut:
+        </p>
+
+        <div class="address-detail reveal delay-2" id="alamatKirim">
+            Sukahati, Cibinong, Bogor, Jawa Barat (Jl. Mawar, RT03/RW01, No.17, Muaraberes)
+        </div>
+
+        <div class="receiver-name reveal delay-2" style="margin-bottom: 20px;">
+            Penerima: Dian / Bagus (0898-8682-027)
+        </div>
+
+        <button class="btn-copy reveal-zoom delay-3" onclick="copyToClipboard('alamatKirim')">Salin Alamat</button>
+
+        <hr class="reveal-bounce" style="border: none; border-top: 1px dashed rgba(212, 175, 55, 0.4); width: 60%; margin: 40px auto 30px auto;">
+    </section>
+
+    <section class="gift-section" style="padding-top: 0;">
+        <div class="story-header" style="margin-bottom: 25px;">
+            <div class="story-batik-title reveal" style="font-size: 3rem;">Digital Gift</div>
+            <div class="story-caption-title reveal delay-1">Amplop Digital</div>
+        </div>
+
+        <div class="gift-container">
+            <p class="gift-intro reveal delay-1" style="margin-bottom: 25px;">
+                Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Anda ingin memberikan tanda kasih, Anda dapat mengirimkannya melalui opsi berikut:
+            </p>
+
+            <div class="account-card-premium reveal-zoom delay-2">
+                <div class="bank-logo">BNI</div>
+                <div class="account-number" id="norekBagus">1627254538</div>
+                <div class="account-holder">a.n. BAGUS PRASETYO SADIKIN</div>
+                <button class="btn-copy" onclick="copyToClipboard('norekBagus')">Salin Nomor</button>
+            </div>
+
+            <div class="account-card-premium reveal-blur" style="margin-top: 25px;">
+                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: #666666; line-height: 1.6; margin-bottom: 20px; padding: 0 10px; text-align: center;">
+                    Tanpa mengurangi rasa hormat, bagi Anda yang ingin memberikan tanda kasih secara digital, dapat memindai kode QRIS di bawah ini:
+                </p>
+
+                <div style="border: 1px solid rgba(197, 168, 128, 0.4); padding: 8px; border-radius: 12px; background: #ffffff; box-shadow: 0 6px 15px rgba(0,0,0,0.04); margin-bottom: 15px; width: 180px;">
+                    <img src="qris.jpeg" alt="QRIS Tanda Kasih" style="width: 100%; height: auto; display: block; border-radius: 6px;">
+                </div>
+
+                <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #2b1f1d; letter-spacing: 1.5px; font-weight: 600; margin-top: 5px;">
+                    QRIS TANDA KASIH
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="toastNotify" class="toast-notify">Berhasil disalin!</div>
+
+    <footer class="closing-footer">
+        <p class="closing-text reveal">
+            Merupakan suatu kebahagiaan dan kehormatan bagi kami, apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu kepada kami.<br><br>
+            Atas kehadiran dan doa restunya, kami mengucapkan terima kasih.
+        </p>
+
+        <div class="closing-names reveal-zoom delay-1">
+            Dian & Bagus
+        </div>
+
+        <div class="copyright-text reveal delay-2">
+            © 2026 Dian & Bagus Wedding. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        function bukaUndangan() {
+            document.getElementById('coverUndangan').classList.add('slide-up');
+            document.body.classList.remove('locked');
+
+            const openingNames = document.querySelector('.opening-fullscreen .hero-names-v');
+            if (openingNames) {
+                openingNames.style.animation = '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll(
+                '.reveal, .reveal-zoom, .reveal-left, .reveal-right, .reveal-drop, .reveal-blur, .reveal-bounce'
+            );
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, {
+                threshold: 0.08,
+                rootMargin: '0px 0px -10% 0px'
+            });
+
+            revealElements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+    <script>
+        function copyToClipboard(elementId) {
+            const textToCopy = document.getElementById(elementId).innerText;
+
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                const toast = document.getElementById('toastNotify');
+                toast.classList.add('show');
+
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2500);
+            }).catch(err => {
+                console.error('Gagal menyalin: ', err);
+            });
+        }
+    </script>
+
+</body>
+</html>
