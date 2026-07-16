@@ -13,22 +13,21 @@
 
     <style>
 
-        /* Tombol Minimalis Premium */
 .btn-qris-toggle {
     background-color: transparent;
     border: 1px solid var(--gold-accent);
     color: var(--text-dark);
     font-family: 'Montserrat', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     font-weight: 500;
-    padding: 8px 16px;
+    padding: 6px 12px;
     border-radius: 6px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    margin-top: 10px;
-    letter-spacing: 1px;
+    gap: 6px;
+    margin-top: 8px; 
+    letter-spacing: 0.5px;
     transition: all 0.3s ease;
 }
 
@@ -37,51 +36,59 @@
     color: white;
 }
 
-/* Container QRIS Awalnya Tersembunyi */
 .qris-container {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
-    transition: max-height 0.4s ease-out, opacity 0.3s ease, margin 0.3s ease;
+    transition: max-height 0.4s ease-out, opacity 0.3s ease;
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
-/* Class Aktif saat Tombol Diklik (Bakal muncul lewat JS) */
 .qris-container.show {
-    max-height: 300px; /* Sesuaikan dengan tinggi gambar QRIS lu */
+    max-height: 220px; 
     opacity: 1;
     margin-top: 15px;
+    padding-bottom: 5px;
 }
 
-/* Gambar QRIS-nya */
+
 .qris-image {
-    width: 180px; /* Ukuran pas biar ga menonjol gede banget */
+    width: 150px; 
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #eee;
+}
+
+.qris-container.show {
+    max-height: 240px !important;
+    opacity: 1 !important;
+    margin-top: 25px !important;
+    padding-bottom: 5px !important;
 }
         
-/* Menarik semua text & countdown ke atas biar presisi di tengah layar */
+
 .cover-content-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transform: translateY(-40px); /* KUNCI: Menaikkan posisi biar ga kena wayang */
+    transform: translateY(-40px); 
     width: 100%;
     z-index: 10;
 }
 
-/* Container Countdown dibuat ramping dan mungil */
+
 .cover-countdown {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 25px; /* Jarak pas setelah nama "Bagus" */
+    margin-top: 25px; 
     width: 60%;
-    max-width: 210px; /* Lebar dikecilkan biar muat di sela wayang */
+    max-width: 210px; 
 }
 
 /* Grid Box rapat */
@@ -94,7 +101,7 @@
 
 /* Kotak Box Mini Premium */
 .cover-box {
-    background: rgba(251, 249, 246, 0.85); /* Sedikit lebih solid biar kebaca */
+    background: rgba(251, 249, 246, 0.85);
     backdrop-filter: blur(4px); 
     border: 1px solid rgba(197, 168, 128, 0.35); 
     border-radius: 8px;
@@ -1232,7 +1239,7 @@ html, body {
         <div style="position: absolute; top: 20px; left: 20px; width: 40px; height: 40px; border-top: 2px solid var(--gold-accent); border-left: 2px solid var(--gold-accent); opacity: 0.7; pointer-events: none; z-index: 5;"></div>
         <div style="position: absolute; top: 20px; right: 20px; width: 40px; height: 40px; border-top: 2px solid var(--gold-accent); border-right: 2px solid var(--gold-accent); opacity: 0.7; pointer-events: none; z-index: 5;"></div>
 
-        <!-- BUNGKUSAN UTAMA: Ditarik naik biar ga nabrak elemen bawah -->
+      
         <div class="cover-content-wrapper">
             <div class="opening-title reveal" style="color: var(--gold-accent); font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 25px; font-weight: 600;">
                 The Wedding Of
@@ -1345,7 +1352,7 @@ html, body {
 <div class="event-details reveal" style="padding-top: 0; margin-top: 0;">
 
     <h2 class="reveal" style="font-family: 'Cinzel', serif; font-size: 1.5rem; color: #2b1f1d; letter-spacing: 2px; margin-bottom: 20px; text-transform: uppercase; margin-top: 0;">
-        Akad Pernikahan
+        AKAD
     </h2>
 
     <p class="reveal delay-1" style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; font-weight: bold; color: #2b1f1d; margin-bottom: 5px;">
@@ -1519,39 +1526,45 @@ html, body {
             <div class="story-caption-title reveal delay-1">Amplop Digital</div>
         </div>
 
-        <div class="gift-container">
-            <p class="gift-intro reveal delay-1" style="margin-bottom: 25px;">
-                Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Anda ingin memberikan tanda kasih, Anda dapat mengirimkannya melalui opsi berikut:
-            </p>
+<div class="gift-container" style="width: 100%; max-width: 480px; margin: 0 auto; padding: 0 20px; box-sizing: border-box;">
+    <p class="gift-intro reveal delay-1" style="margin-bottom: 30px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem; color: #666666; line-height: 1.6; font-weight: 400;">
+        Doa restu Anda merupakan karunia yang sangat berarti bagi kami. Namun jika Anda ingin memberikan tanda kasih, Anda dapat mengirimkannya melalui opsi berikut:
+    </p>
 
-            <div class="account-card-premium reveal-zoom delay-2">
-                <div class="bank-logo">BNI</div>
-                <div class="account-number" id="norekBagus">1627254538</div>
-                <div class="account-holder">a.n. BAGUS PRASETYO SADIKIN</div>
-                <button class="btn-copy" onclick="copyToClipboard('norekBagus')">Salin Nomor</button>
-            </div>
+    <!-- PREMIUM BANK CARD -->
+    <div class="bank-card reveal-zoom" style="background: #ffffff; border: 1px solid rgba(197, 168, 128, 0.3); border-radius: 20px; padding: 30px 24px; margin: 20px auto; box-shadow: 0 15px 35px rgba(197, 168, 128, 0.08); display: flex; flex-direction: column; align-items: center; text-align: center; box-sizing: border-box; width: 100%; position: relative; overflow: hidden;">
+        
+        <!-- Ornamen Garis Emas Tipis di Bagian Atas Card -->
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #dfd0b8, #c5a880, #dfd0b8);"></div>
+        
+        <!-- Logo BCA -->
+        <img src="BNI.png" alt="BCA" class="bank-logo" style="height: 32px; width: auto; margin-bottom: 20px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.02));">
+        
+        <!-- Nomor Rekening -->
+        <div class="account-number" id="bca-account" style="font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 700; color: #2d2d2d; letter-spacing: 2px; margin-bottom: 6px;">1627254538</div>
+        
+        <!-- Nama Pemilik -->
+        <div class="account-name" style="font-family: 'Montserrat', sans-serif; font-size: 0.75rem; color: #8e8e8e; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 500;">a.n BAGUS PRASETYO SADIKIN</div>
+        
+        <!-- Container Tombol Aksi -->
+        <div style="display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 200px; align-items: center;">
+            <!-- Tombol Salin -->
+            <button class="btn-copy" onclick="copyToClipboard('bca-account')" style="width: 100%; border-radius: 50px; padding: 10px 20px; font-weight: 500; font-size: 0.75rem; letter-spacing: 0.5px;">
+                <i class="fa-regular fa-copy"></i> Salin Rekening
+            </button>
 
-            <div class="account-card-premium reveal-blur" style="margin-top: 25px;">
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: #666666; line-height: 1.6; margin-bottom: 20px; padding: 0 10px; text-align: center;">
-                    Tanpa mengurangi rasa hormat, bagi Anda yang ingin memberikan tanda kasih secara digital, dapat memindai kode QRIS di bawah ini:
-                </p>
+            <!-- Tombol QRIS -->
+            <button class="btn-qris-toggle" onclick="toggleQris('qris-bca')" style="width: 100%; background: none; border: 1px solid #c5a880; color: #c5a880; border-radius: 50px; padding: 9px 20px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; letter-spacing: 0.5px;">
+                <i class="fa-solid fa-qrcode"></i> Tampilkan QRIS
+            </button>
+        </div>
 
-                <div class="account-details">
-    <button class="btn-qris-toggle" onclick="toggleQris('qris-bca')">
-        <i class="fa-solid fa-qrcode"></i> Tampilkan QRIS
-    </button>
-
-    <div id="qris-bca" class="qris-container">
-        <img src="qris.jpeg" alt="QRIS BCA" class="qris-image">
+        <!-- Area QRIS -->
+        <div id="qris-bca" class="qris-container" style="max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); width: 100%; display: flex; justify-content: center; align-items: center;">
+            <img src="qris.jpeg" alt="QRIS BCA" class="qris-image" style="width: 160px; height: auto; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.03);">
+        </div>
     </div>
 </div>
-
-                <div style="font-family: 'Cinzel', serif; font-size: 1.1rem; color: #2b1f1d; letter-spacing: 1.5px; font-weight: 600; margin-top: 5px;">
-                    QRIS TANDA KASIH
-                </div>
-            </div>
-        </div>
-    </section>
 
     <div id="toastNotify" class="toast-notify">Berhasil disalin!</div>
 
