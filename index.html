@@ -349,14 +349,14 @@ html, body {
             to { opacity: 1; transform: translateY(0); }
         }
 
+/* Cari class ini di file .css lu */
 .hero-footer-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: auto;
-    padding-bottom: 60px;
-    justify-content: flex-end;
+  /* Codingan lu yang lain... */
+
+  /* Ganti nilai ini! Naikkan padding-top agar teks turun */
+  padding-top: 150px; /* <--- Coba ganti misal dari 60px atau 80px, jadi 150px atau 180px */
+  
+  /* Codingan lu yang lain... */
 }
 
         .hero-names-v {
@@ -1207,25 +1207,35 @@ html, body {
 </head>
 <body class="locked">
 
-    <section class="hero" id="coverUndangan">
+<section class="hero" id="coverUndangan">
+    <div class="hero-title">Undangan Pernikahan</div>
 
-        <div class="hero-title">Undangan Pernikahan</div>
-
-        <div class="hero-footer-wrapper">
-
-            <div class="hero-names-v">
-                <div class="name-line">Dian</div>
-                <div class="ampersand-line">&</div>
-                <div class="name-line">Bagus</div>
-            </div>
-
-            <div class="hero-cover-date">16 Agustus 2026</div>
-
-            <button class="btn-buka" onclick="bukaUndangan()">
-                <i class="fa-solid fa-envelope-open"></i> Buka Undangan
-            </button>
+    <!-- Blok yang kita kasih padding besar tadi -->
+    <div class="hero-footer-wrapper">
+        
+        <!-- 1. Nama kalian -->
+        <div class="hero-names-v">
+            <div class="name-line">Dian</div>
+            <div class="ampersand-line">&</div>
+            <div class="name-line">Bagus</div>
         </div>
-    </section>
+
+        <!-- 2. Tanggal -->
+        <div class="hero-cover-date">16 Agustus 2026</div>
+
+        <!-- 3. Teks "Kepada" ditaruh di sini -->
+        <div style="margin-top: 15px; margin-bottom: 15px; text-align: center;">
+            <p style="font-family: 'Great Vibes', 'Alex Brush', 'Allura', cursive; font-size: 1.3rem; color: #e6c687; letter-spacing: 0.5px; margin: 0;">
+                Kepada : <span id="nama-tamu" style="font-weight: 500;">Tamu Undangan</span>
+            </p>
+        </div>
+
+        <!-- 4. Tombol "Buka" -->
+        <button class="btn-buka" onclick="bukaUndangan()">
+            <i class="fa-solid fa-envelope-open"></i> Buka Undangan
+        </button>
+    </div>
+</section>
 
 
 
