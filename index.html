@@ -349,14 +349,14 @@ html, body {
             to { opacity: 1; transform: translateY(0); }
         }
 
+/* Cari class ini di file .css lu */
 .hero-footer-wrapper {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: auto;
-    padding-bottom: 60px;
-    justify-content: flex-end;
+  /* Codingan lu yang lain... */
+
+  /* Ganti nilai ini! Naikkan padding-top agar teks turun */
+  padding-top: 150px; /* <--- Coba ganti misal dari 60px atau 80px, jadi 150px atau 180px */
+  
+  /* Codingan lu yang lain... */
 }
 
         .hero-names-v {
@@ -1207,27 +1207,38 @@ html, body {
 </head>
 <body class="locked">
 
-    <section class="hero" id="coverUndangan">
+<section class="hero" id="coverUndangan">
 
-        <div class="hero-title">Undangan Pernikahan</div>
+    <div class="hero-title">Undangan Pernikahan</div>
 
-        <div class="hero-footer-wrapper">
-
-            <div class="hero-names-v">
-                <div class="name-line">Dian</div>
-                <div class="ampersand-line">&</div>
-                <div class="name-line">Bagus</div>
-            </div>
-
-            <div class="hero-cover-date">16 Agustus 2026</div>
-
-            <button class="btn-buka" onclick="bukaUndangan()">
-                <i class="fa-solid fa-envelope-open"></i> Buka Undangan
-            </button>
+    <!-- Pembungkus konten bawah -->
+    <div class="hero-footer-wrapper">
+        
+        <!-- 1. Nama kalian -->
+        <div class="hero-names-v">
+            <div class="name-line">Dian</div>
+            <div class="ampersand-line">&</div>
+            <div class="name-line">Bagus</div>
         </div>
-    </section>
 
+        <!-- 2. Tanggal pernikahan -->
+        <div class="hero-cover-date">16 Agustus 2026</div>
 
+        <!-- 3. Teks Kepada (Font Awal Yang Lu Suka) -->
+        <div style="margin-top: 10px; margin-bottom: 15px; text-align: center; position: relative; z-index: 10;">
+            <p style="font-family: 'Great Vibes', 'Alex Brush', 'Allura', cursive; font-size: 1.3rem; color: #e6c687; letter-spacing: 0.5px; margin: 0;">
+                Kepada : <span id="nama-tamu" style="font-weight: 500;">Tamu Undangan</span>
+            </p>
+        </div>
+
+        <!-- 4. Tombol Buka Undangan (Aman dari Bug) -->
+        <button class="btn-buka" onclick="bukaUndangan()" style="position: relative; z-index: 20; cursor: pointer;">
+            <i class="fa-solid fa-envelope-open"></i> Buka Undangan
+        </button>
+
+    </div>
+
+</section>
 
 <section class="opening-fullscreen" style="position: relative; overflow: hidden; background-color: var(--bg-cream); height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px; box-sizing: border-box;">
         
@@ -1731,8 +1742,27 @@ function toggleQris(id) {
         button.innerHTML = '<i class="fa-solid fa-qrcode"></i> Tampilkan QRIS';
     }
 }
-        
+
     </script>
+
+<script>
+    function getGuestName() {
+        // Mengambil teks setelah tanda tanya (?) di URL
+        let guestName = window.location.search.substring(1); 
+        
+        if (guestName) {
+            // Mengubah tanda + menjadi spasi normal
+            guestName = decodeURIComponent(guestName.replace(/\+/g, ' '));
+            // Masukin nama ke ID nama-tamu
+            document.getElementById('nama-tamu').innerText = guestName;
+        } else {
+            // Default kalau kosongan
+            document.getElementById('nama-tamu').innerText = "Tamu Undangan";
+        }
+    }
+    // Jalankan pas halaman selesai loading
+    window.addEventListener('DOMContentLoaded', getGuestName);
+</script>
 
 </body>
 </html>
