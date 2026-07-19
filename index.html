@@ -349,14 +349,14 @@ html, body {
             to { opacity: 1; transform: translateY(0); }
         }
 
-/* Cari class ini di file .css lu */
 .hero-footer-wrapper {
-  /* Codingan lu yang lain... */
-
-  /* Ganti nilai ini! Naikkan padding-top agar teks turun */
-  padding-top: 150px; /* <--- Coba ganti misal dari 60px atau 80px, jadi 150px atau 180px */
-  
-  /* Codingan lu yang lain... */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    padding-bottom: 60px;
+    justify-content: flex-end;
 }
 
         .hero-names-v {
@@ -1207,38 +1207,25 @@ html, body {
 </head>
 <body class="locked">
 
-<section class="hero" id="coverUndangan">
+    <section class="hero" id="coverUndangan">
 
-    <div class="hero-title">Undangan Pernikahan</div>
+        <div class="hero-title">Undangan Pernikahan</div>
 
-    <!-- Pembungkus konten bawah -->
-    <div class="hero-footer-wrapper">
-        
-        <!-- 1. Nama kalian -->
-        <div class="hero-names-v">
-            <div class="name-line">Dian</div>
-            <div class="ampersand-line">&</div>
-            <div class="name-line">Bagus</div>
+        <div class="hero-footer-wrapper">
+
+            <div class="hero-names-v">
+                <div class="name-line">Dian</div>
+                <div class="ampersand-line">&</div>
+                <div class="name-line">Bagus</div>
+            </div>
+
+            <div class="hero-cover-date">16 Agustus 2026</div>
+
+            <button class="btn-buka" onclick="bukaUndangan()">
+                <i class="fa-solid fa-envelope-open"></i> Buka Undangan
+            </button>
         </div>
-
-        <!-- 2. Tanggal pernikahan -->
-        <div class="hero-cover-date">16 Agustus 2026</div>
-
-        <!-- 3. Teks Kepada (Font Awal Yang Lu Suka) -->
-        <div style="margin-top: 10px; margin-bottom: 15px; text-align: center; position: relative; z-index: 10;">
-            <p style="font-family: 'Great Vibes', 'Alex Brush', 'Allura', cursive; font-size: 1.3rem; color: #e6c687; letter-spacing: 0.5px; margin: 0;">
-                Kepada : <span id="nama-tamu" style="font-weight: 500;">Tamu Undangan</span>
-            </p>
-        </div>
-
-        <!-- 4. Tombol Buka Undangan (Aman dari Bug) -->
-        <button class="btn-buka" onclick="bukaUndangan()" style="position: relative; z-index: 20; cursor: pointer;">
-            <i class="fa-solid fa-envelope-open"></i> Buka Undangan
-        </button>
-
-    </div>
-
-</section>
+    </section>
 
 
 
@@ -1645,41 +1632,14 @@ const startCoverCountdown = setInterval(() => {
 
 }, 1000);
 
-<script>
         // Deklarasi Variabel Musik Global
         const myAudio = document.getElementById("background-music");
         const musicBtn = document.getElementById("music-control");
         const musicIcon = document.getElementById("music-icon");
 
-        // Set target ke Minggu, 16 Agustus 2026 jam 09:00:00 WIB
-        const akadDate = new Date("August 16, 2026 09:00:00").getTime();
-
-        const startCoverCountdown = setInterval(() => {
-            const currentTime = new Date().getTime();
-            const timeLeft = akadDate - currentTime;
-
-            if (timeLeft < 0) {
-                clearInterval(startCoverCountdown);
-                document.getElementById("cover-days").innerText = "00";
-                document.getElementById("cover-hours").innerText = "00";
-                document.getElementById("cover-minutes").innerText = "00";
-                document.getElementById("cover-seconds").innerText = "00";
-                return;
-            }
-
-            const d = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-            const h = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-            document.getElementById("cover-days").innerText = d < 10 ? "0" + d : d;
-            document.getElementById("cover-hours").innerText = h < 10 ? "0" + h : h;
-            document.getElementById("cover-minutes").innerText = m < 10 ? "0" + m : m;
-            document.getElementById("cover-seconds").innerText = s < 10 ? "0" + s : s;
-        }, 1000);
-
         // Fungsi Membuka Undangan
         function bukaUndangan() {
+            // Efek slide-up bawaan lu
             const cover = document.getElementById('coverUndangan');
             cover.classList.add('slide-up');
             document.body.classList.remove('locked');
@@ -1689,12 +1649,13 @@ const startCoverCountdown = setInterval(() => {
                 window.dispatchEvent(triggerActive);
             }, 400);
 
+            // LOGIKA MUSIK: Munculkan tombol melayang bulat & mainkan lagunya
             if (musicBtn) {
                 musicBtn.style.setProperty("display", "flex", "important");
             }
             if (myAudio) {
                 myAudio.play().then(() => {
-                    musicIcon.classList.add("fa-spin-custom");
+                    musicIcon.classList.add("fa-spin-custom"); // Icon CD mulai muter
                     console.log("Musik diputar otomatis!");
                 }).catch(err => {
                     console.log("Autoplay ditolak browser, nunggu interaksi: ", err);
@@ -1711,14 +1672,14 @@ const startCoverCountdown = setInterval(() => {
         function toggleMusic() {
             if (myAudio.paused) {
                 myAudio.play();
-                musicIcon.classList.add("fa-spin-custom");
+                musicIcon.classList.add("fa-spin-custom"); // Muter lagi
             } else {
                 myAudio.pause();
-                musicIcon.classList.remove("fa-spin-custom");
+                musicIcon.classList.remove("fa-spin-custom"); // Stop putaran
             }
         }
 
-        // Animasi Scroll Reveal
+        // Animasi Scroll Reveal Bawaan Lu
         document.addEventListener('DOMContentLoaded', () => {
             const revealElements = document.querySelectorAll(
                 '.reveal, .reveal-zoom, .reveal-left, .reveal-right, .reveal-drop, .reveal-blur, .reveal-bounce'
@@ -1740,7 +1701,7 @@ const startCoverCountdown = setInterval(() => {
             revealElements.forEach(el => observer.observe(el));
         });
 
-        // Copy Clipboard
+        // Copy Clipboard Bawaan Lu
         function copyToClipboard(elementId) {
             const textToCopy = document.getElementById(elementId).innerText;
 
@@ -1756,34 +1717,22 @@ const startCoverCountdown = setInterval(() => {
             });
         }
 
-        // Toggle QRIS
-        function toggleQris(id) {
-            const qrisBox = document.getElementById(id);
-            const button = event.currentTarget;
-            
-            qrisBox.classList.toggle('show');
-            
-            if (qrisBox.classList.contains('show')) {
-                button.innerHTML = '<i class="fa-solid fa-xmark"></i> Sembunyikan QRIS';
-            } else {
-                button.innerHTML = '<i class="fa-solid fa-qrcode"></i> Tampilkan QRIS';
-            }
-        }
-
-        // Ambil Nama Tamu dari URL
-        function getGuestName() {
-            let guestName = window.location.search.substring(1); 
-            if (guestName) {
-                guestName = decodeURIComponent(guestName.replace(/\+/g, ' '));
-                document.getElementById('nama-tamu').innerText = guestName;
-            } else {
-                document.getElementById('nama-tamu').innerText = "Tamu Undangan";
-            }
-        }
+function toggleQris(id) {
+    const qrisBox = document.getElementById(id);
+    const button = event.currentTarget;
+    
+    // Toggle class 'show' buat animasi muncul/sembunyi
+    qrisBox.classList.toggle('show');
+    
+    // Opsional: Ubah teks tombol biar makin interaktif
+    if (qrisBox.classList.contains('show')) {
+        button.innerHTML = '<i class="fa-solid fa-xmark"></i> Sembunyikan QRIS';
+    } else {
+        button.innerHTML = '<i class="fa-solid fa-qrcode"></i> Tampilkan QRIS';
+    }
+}
         
-        window.addEventListener('DOMContentLoaded', getGuestName);
     </script>
-        
-        
+
 </body>
 </html>
