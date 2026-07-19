@@ -1741,6 +1741,25 @@ function toggleQris(id) {
         button.innerHTML = '<i class="fa-solid fa-qrcode"></i> Tampilkan QRIS';
     }
 }
+
+        <script>
+    function getGuestName() {
+        // Mengambil teks setelah tanda tanya (?) di URL
+        let guestName = window.location.search.substring(1); 
+        
+        if (guestName) {
+            // Mengubah tanda + menjadi spasi normal
+            guestName = decodeURIComponent(guestName.replace(/\+/g, ' '));
+            // Masukin nama ke ID nama-tamu
+            document.getElementById('nama-tamu').innerText = guestName;
+        } else {
+            // Default kalau kosongan
+            document.getElementById('nama-tamu').innerText = "Tamu Undangan";
+        }
+    }
+    // Jalankan pas halaman selesai loading
+    window.addEventListener('DOMContentLoaded', getGuestName);
+</script>
         
     </script>
 
