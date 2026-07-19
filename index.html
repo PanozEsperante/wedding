@@ -1208,9 +1208,10 @@ html, body {
 <body class="locked">
 
 <section class="hero" id="coverUndangan">
+
     <div class="hero-title">Undangan Pernikahan</div>
 
-    <!-- Blok yang kita kasih padding besar tadi -->
+    <!-- Pembungkus konten bawah -->
     <div class="hero-footer-wrapper">
         
         <!-- 1. Nama kalian -->
@@ -1220,21 +1221,23 @@ html, body {
             <div class="name-line">Bagus</div>
         </div>
 
-        <!-- 2. Tanggal -->
+        <!-- 2. Tanggal pernikahan -->
         <div class="hero-cover-date">16 Agustus 2026</div>
 
-        <!-- 3. Teks "Kepada" ditaruh di sini -->
-        <div style="margin-top: 15px; margin-bottom: 15px; text-align: center;">
+        <!-- 3. Teks Kepada (Font Awal Yang Lu Suka) -->
+        <div style="margin-top: 10px; margin-bottom: 15px; text-align: center; position: relative; z-index: 10;">
             <p style="font-family: 'Great Vibes', 'Alex Brush', 'Allura', cursive; font-size: 1.3rem; color: #e6c687; letter-spacing: 0.5px; margin: 0;">
                 Kepada : <span id="nama-tamu" style="font-weight: 500;">Tamu Undangan</span>
             </p>
         </div>
 
-        <!-- 4. Tombol "Buka" -->
-        <button class="btn-buka" onclick="bukaUndangan()">
+        <!-- 4. Tombol Buka Undangan (Aman dari Bug) -->
+        <button class="btn-buka" onclick="bukaUndangan()" style="position: relative; z-index: 20; cursor: pointer;">
             <i class="fa-solid fa-envelope-open"></i> Buka Undangan
         </button>
+
     </div>
+
 </section>
 
 
